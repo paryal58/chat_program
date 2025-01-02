@@ -1,9 +1,7 @@
-#   User 1 Code
+#   Chat Program
 #   Here is the gist of what this program does:
-#   - Creates a new thread and takes as an input the port number of another user
-#   - Connects to user using sockets and enters in a loop of reading and writing message
-#   - Creates another thread called ServerSocket and listens on the socket for connection
-#   - The created thread will attempt to read messages from connection socket and print to the screen
+#   - Connects to another user(with different port number) utilizing sockets and threads
+#   - Utilizes threading to enter in a loop of reading and writing message
 #   - These reading and writing thread between two user programs allows for chatting through sockets
 
 
@@ -12,14 +10,15 @@ import threading
 import time
 
 class ChatUser:
-    def __init__(self, host='localhost', server_port=5106):
+    # Initializing function
+    def __init__(self, host='localhost'):
         self.host = host
-        self.server_port = server_port
+        self.server_port = int(input("Enter the server port number of this user: "))
         self.server_socket = None
         self.client_socket = None
         self.connection_socket = None  
 
-    # Server to listen for incoming chat messages
+    # Start server funtion
     def start_server(self):
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server_socket.bind((self.host, self.server_port))
@@ -28,7 +27,7 @@ class ChatUser:
         # Read messages from this socket
         self.receive_messages()
 
-    # Receive messsage function
+    # Receive message function
     def receive_messages(self):
         try:
             while True:
