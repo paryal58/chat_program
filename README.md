@@ -10,4 +10,6 @@ This program implements a simple chat program. The program contains one file: pr
 
 Programming Environment:
 This program is written in Python and requires two concurrent instance of the program(n the same device but different window) to work properly. Below is the preview of how the program works:
+
+![Project Screenshot](./progScreenshot2.jpeg)
 ![Project Screenshot](./progScreenshot.jpeg)
